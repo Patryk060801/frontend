@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+    <title>Pokedex Panda</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <header class="header-home">
+            <div class="logo-wrapper">
+                <img class="logo-pokeball" src="images/pokeball.svg" alt="pokeball">
+                <h1 class="title-page">Pokedex-Panda</h1>
+            </div>
+            <span>
+                <ion-icon class="icn-search" name="search-outline"></ion-icon>
+                <input type="text" id="search_input" class="search" placeholder="Search">
+                <img src="images/close.png" alt="close-icon" class="search-close-icon">
+                <div class="filter-menu">
+                    <img src="images/sort.png" alt="sort-icon" class="sort-icon">
+                    <div class="filter-wrapper">
+                        <p class="body2-fonts">Sort by:</p>
+                        <div class="menu">
+                            <input type="radio" id="name" name="filters" value="name" checked>
+                            <label for="name" class="body2-fonts">Name</label>
+                        </div>
+                        <div class="menu">
+                            <input type="radio" id="number" name="filters" value="number">
+                            <label for="number" class="body2-fonts">Number</label>
+                        </div>
+                    </div>
+                </div>
+            </span>
+        </header>
+
+        <div class="pagination">
+            <button id="prev" class="nav-button">&#9665;</button>
+            <span id="page-number">1</span>
+            <button id="next" class="nav-button">&#9655;</button>
+        </div>
+        <div id="pokemon-container" class="pokemon-container"></div>
+        <div id="not-found-message" style="display: none;">Pokemon not found</div>
+    </div>
+    <!-- Dodane skrypty TensorFlow.js i modelu -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="path_to_your_pokemon_model.js"></script>
+    <script src="app.js"></script>
+
+    <script src="pokemon.js" defer></script>
+    <script src="pokemon-detail.js" defer></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
