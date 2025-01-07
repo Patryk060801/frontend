@@ -1,62 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
-    <title>Pokedex Panda</title>
-</head>
-
-<body>
-    <div class="container">
-
-        <header class="header-home">
-            <div class="logo-wrapper">
-                <img class="logo-pokeball" src="images/pokeball.svg" alt="pokeball">
-                <h1 class="title-page">Pokedex-Panda</h1>
-            </div>
-            <span>
-                <ion-icon class="icn-search" name="search-outline"></ion-icon>
-                <input type="text" id="search_input" class="search" placeholder="Search">
-                <img src="images/close.png" alt="close-icon" class="search-close-icon">
-                <div class="filter-menu">
-                    <img src="images/sort.png" alt="sort-icon" class="sort-icon">
-                    <div class="filter-wrapper">
-                        <p class="body2-fonts">Sort by:</p>
-                        <div class="menu">
-                            <input type="radio" id="name" name="filters" value="name" checked>
-                            <label for="name" class="body2-fonts">Name</label>
-                        </div>
-                        <div class="menu">
-                            <input type="radio" id="number" name="filters" value="number">
-                            <label for="number" class="body2-fonts">Number</label>
-                        </div>
-                    </div>
-                </div>
-            </span>
-        </header>
-
-        <div class="pagination">
-            <button id="prev" class="nav-button">&#9665;</button>
-            <span id="page-number">1</span>
-            <button id="next" class="nav-button">&#9655;</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>GYM APP ------ Panda</title>
+  </head>
+  <body>
+    <nav class="navigation_banner">
+      <ion-icon class="timer-set nav-icon" name="timer-outline"></ion-icon>
+      <h1 class="title-nav">GYM App</h1>
+      <ion-icon class="camera nav-icon" name="camera-outline"></ion-icon>
+    </nav>
+    <main class="main-training-schedule">
+      <div class="training-title-input hidden">
+        <div class="training-title-input-content">
+          <ion-icon
+            class="close-input-title-icon"
+            name="close-circle-outline"
+          ></ion-icon>
+          <label class="label-training-title" for="training-input"
+            >Training Name:</label
+          >
+          <input
+            class="training-input"
+            id="training-input"
+            type="text" name="training-input"
+            required
+          /><input class="input-training-title" name="input-training-title" type="text" />
+          <button class="btn-add-title">Add</button>
         </div>
-        <div id="pokemon-container" class="pokemon-container"></div>
-        <div id="not-found-message" style="display: none;">Pokemon not found</div>
-    </div>
-    <!-- Dodane skrypty TensorFlow.js i modelu -->
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-    <script src="path_to_your_pokemon_model.js"></script>
-    <script src="app.js"></script>
+      </div>
+      <section id="add-training-content" class="hidden">
+        <div class="training-card">
+          <form class="exercise-specifications" novalidate="novalidate">
+            <div class="exercise-title">
+              <input
+                class="exercise-input"
+                id="exercise-input"
+                type="text" name="exercise-input"
+                required
+                placeholder="Exercise name:"
+              />
+            </div>
+            <span class="weight">
+              <label for="weight-input">Weight:</label>
+              <input
+                id="weight-input"
+                class="weight-input" 
+                type="number" name="weight-input"
+                required
+              />
+            </span>
+            <span class="reps">
+              <label for="reps-input">Reps:</label>
+              <input
+                id="reps-input"
+                class="reps-input"
+                type="number" name="reps-input"
+                required
+              />
+            </span>
+            <span class="sets">
+              <label for="sets-input">Sets:</label>
+              <input
+                id="sets-input"
+                class="sets-input"
+                type="number" name="sets-input"
+                required
+              />
+            </span>
+            <div class="img-app">
+              <ion-icon class="barbell-icon" name="barbell"></ion-icon>
+            </div>
+            <span class="timer">
+              <label for="set-timer">Timer (s):</label>
+              <input
+                id="set-timer"
+                class="set-timer"
+                type="number" name="set-timer"
+                min="0"
+                max="300"
+                step="5"
+                value="60"
+              />
+            </span>
+            <div class="add-reset-exercise">
+              <button type="reset" class="reset">Reset</button>
+              <button type="submit" id="add" class="add">Add</button>
+            </div>
+          </form>
+        </div>
+      </section>
 
-    <script src="pokemon.js" defer></script>
-    <script src="pokemon-detail.js" defer></script>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-</body>
+      <div id="trainingList"></div>
+      <ion-icon class="add-training-icon" name="add-circle"></ion-icon>
+    </main>
+<!-- <------------------------------SCHEDULE SECTION -------------------------------------------------------->
+<main class="button-schedule-section">
+  <button class="burger-menu"><h2 class="trening-data"></h2></button> <!-- Przycisk burgera -->
+  <div class="container-exercise hide">
+    
+  </div>
+  <button class="clear-history-btn">Wyczyść historię</button>
+</main>
 
+
+
+
+
+    <footer class="footer-banner">
+      <ion-icon class="progress-bar footer-icon" name="analytics"></ion-icon>
+      <ion-icon class="fitatu footer-icon" name="fitness"></ion-icon>
+      <ion-icon
+        class="previus-training-schedule footer-icon"
+        name="calendar"
+      ></ion-icon>
+      <ion-icon class="spotify footer-icon" name="musical-notes"></ion-icon>
+      <ion-icon class="youtube footer-icon" name="logo-youtube"></ion-icon>
+    </footer>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="previus-training-schedule.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
